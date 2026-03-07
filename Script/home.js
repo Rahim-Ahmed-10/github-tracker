@@ -83,7 +83,7 @@ function displayCard(cards){
                         <p class="text-sm text-gray-400">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
                     </div>
 
-                    <div class="p-3 flex gap-11 bg-sky-300">
+                    <div class="p-3 flex gap-11 bg-sky-50">
                         <div>
                             <p class="text-gray-400">Assignee:</p>
                             <p>Rahim Ahmed</p>
@@ -118,7 +118,7 @@ function displayCard(cards){
                         <p class="btn bg-red-200 rounded-2xl text-red-500 p-2">${car.priority}</p>
                     </div>
                     <div class="space-y-2">
-                        <h2 class="text-xl font-bold">${car.title}</h2>
+                        <h2 class="font-bold">${car.title}</h2>
                         <p class="text-sm text-gray-400 ">${car.description}</p>
                         <div>
                             <span class="btn bg-red-200 text-red-500 rounded-2xl">Bug</span>
@@ -139,4 +139,22 @@ function displayCard(cards){
 } 
 
 allCardLoading();
+
+
+document.getElementById("btn-search").addEventListener("click", () =>{
+    const input = document.getElementById("input-search");
+    const searchValue = input.value.trim().toLowerCase();
+    console.log(searchValue)
+
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=%7BsearchText%7D")
+    .then(res => res.json())
+    .then((data) => {
+        const allWords = data.data;
+        console.log(allWords);
+        const filterWords = allWords.filter(data => data.data.toLowerCase().includes(searchValue)
+    ) ;
+       
+        displayCard(filterWords)
+    })
+})
 
