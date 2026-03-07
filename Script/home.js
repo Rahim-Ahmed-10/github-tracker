@@ -41,6 +41,12 @@ async function allCardLoading(category = 'all') {
     }else if(category === "closed"){
         issues = issues.filter(issue => issue.priority === "low")
     }
+
+    const totalElement = document.getElementById('total');
+    if(totalElement){
+        totalElement.innerText = issues.length;
+    }
+
     hideLoading();
     displayCard(issues)
 }
