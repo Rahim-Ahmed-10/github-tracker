@@ -146,14 +146,18 @@ document.getElementById("btn-search").addEventListener("click", () =>{
     const searchValue = input.value.trim().toLowerCase();
     console.log(searchValue)
 
-    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=%7BsearchText%7D")
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
     .then(res => res.json())
     .then((data) => {
         const allWords = data.data;
         console.log(allWords);
-        const filterWords = allWords.filter(data => data.data.toLowerCase().includes(searchValue)
+        const filterWords = allWords.filter(issue => issue.title.toLowerCase().includes(searchValue) || issue.description.toLowerCase().includes(searchValue)
     ) ;
-       
+       const totalElement = document.getElementById("total");
+       if(totalElement){
+        totalElement.innerText = filterWords.length;
+       }
+       input.value="";
         displayCard(filterWords)
     })
 })
