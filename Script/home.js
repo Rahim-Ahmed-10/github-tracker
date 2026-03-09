@@ -70,23 +70,23 @@ function displayCard(cards){
                     <h2 class="text-2xl font-bold">${car.title}</h2>
                     <div class="flex gap-3 items-center">
                         <span class="bg-green-600 text-white p-2 rounded-full">Opened</span>
-                        <p class="text-sm text-gray-400">Rahim Ahmed</p>
+                        <p class="text-sm text-gray-400">${car.assignee}</p>
                         <p class="text-gray-400">${car.updatedAt}</p>
                     </div>
                     
                     <div class="flex gap-2">
-                        <span class="bg-red-200 text-red-500 p-2 rounded-full">Bug</span>
-                        <span class="bg-yellow-200 text-yellow-600 p-2 rounded-full">help wanted</span>
+                        <span class="bg-red-200 text-red-500 p-2 rounded-full">${car.labels[0]}</span>
+                        <span class="bg-yellow-200 text-yellow-600 p-2 rounded-full">${car.labels[1]}</span>
                     </div>
 
                     <div class="">
-                        <p class="text-sm text-gray-400">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                        <p class="text-sm text-gray-400">${car.description}</p>
                     </div>
 
                     <div class="p-3 flex gap-11 bg-sky-50">
                         <div>
                             <p class="text-gray-400">Assignee:</p>
-                            <p>Rahim Ahmed</p>
+                            <p>${car.assignee}</p>
                         </div>
                         <div>
                             <p class="text-gray-400">Priority:</p>
@@ -120,15 +120,15 @@ function displayCard(cards){
                     <div class="space-y-2">
                         <h2 class="font-bold">${car.title}</h2>
                         <p class="text-sm text-gray-400 ">${car.description}</p>
-                        <div>
-                            <span class="btn bg-red-200 text-red-500 rounded-2xl">Bug</span>
-                            <span class="btn bg-amber-100 text-yellow-500 rounded-2xl my-6">${car.status}</span>
-                            <hr class="text-gray-400">
+                        <div class="grid grid-cols-2">
+                            <span class="btn w-100% bg-red-200 text-red-500 rounded-2xl">${car.labels[0]}</span>
+                            <span class="btn bg-amber-100 text-yellow-500 rounded-2xl my-6 p-2">${car.labels[1]}</span>
+                            
                         </div>
 
-                        <div class="space-y-3 mt-4">
-                            <p class="text-gray-400 font-semibold">${car.author}</p>
-                            <p class="text-gray-400 font-semibold">${car.updatedAt}</p>
+                        <div class="space-y-3 mt-4 border-t border-gray-400">
+                            <p class="text-gray-400 font-semibold"># ${car.id} by ${car.author} </p>
+                            <p class="text-gray-400 font-semibold">${car.createdAt}</p>
                         </div>
 
                     </div>
