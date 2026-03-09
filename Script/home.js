@@ -113,16 +113,16 @@ function displayCard(cards){
 
        card.innerHTML = `
         <div class="bg-white p-4 border-t-3 ${borderColor} rounded-2xl shadow space-y-4">
-                    <div class=" flex justify-between " >
-                        <img src="./assets/Open-Status.png" alt="">
+                    <div class="flex justify-between items-center" >
+                        <span><img src="./assets/Open-Status.png" alt=""></span>
                         <p class="btn bg-red-200 rounded-2xl text-red-500 p-2">${car.priority}</p>
                     </div>
                     <div class="space-y-2">
                         <h2 class="font-bold">${car.title}</h2>
                         <p class="text-sm text-gray-400 ">${car.description}</p>
                         <div class="grid grid-cols-2">
-                            <span class="btn w-100% bg-red-200 text-red-500 rounded-2xl">${car.labels[0]}</span>
-                            <span class="btn bg-amber-100 text-yellow-500 rounded-2xl my-6 p-2">${car.labels[1]}</span>
+                            <span class="btn w-100% bg-red-200 text-red-500 rounded-2xl"><i class="fa-solid fa-bug"></i>${car.labels[0]}</span>
+                            <span class="btn bg-amber-100 text-yellow-500 rounded-2xl my-6 p-2"><i class="fa-regular fa-life-ring"></i>${car.labels[1]}</span>
                             
                         </div>
 
